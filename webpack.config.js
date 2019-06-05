@@ -1,7 +1,10 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const getFilesFromDir = require("./config/files");
+const autoprefixer = require('autoprefixer');
 const PAGE_DIR = path.join("src", "pages", path.sep);
+const paths = require('./paths');
+
 
 const htmlPlugins = getFilesFromDir(PAGE_DIR, [".html"]).map( filePath => {
   const fileName = filePath.replace(PAGE_DIR, "");
@@ -31,6 +34,7 @@ module.exports = {
   ],
   resolve:{
 		alias:{
+      '@styles': path.resolve(__dirname, '..', 'src', 'styles'),
 			src: path.resolve(__dirname, "src"),
 			components: path.resolve(__dirname, "src", "components")
 		}
@@ -51,10 +55,43 @@ module.exports = {
 				},
       },
       {
-				test: /\.css$/,
-				use: ["style-loader", "css-loader"],
-				exclude: /node_modules/,
-			}]
+        test: /\.scss$/,
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              // Necessary for external CSS imports to work
+              // https://github.com/facebookincubator/create-react-app/issues/2677
+              ident: 'postcss',
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009',
+                }),
+              ],
+            },
+          },
+          {
+            loader: require.resolve('sass-loader'),
+            options: {
+              includePaths: [path.resolve(paths.appSrc, 'styles')]
+            },
+          },
+        ],
+      }],
     },
     optimization: {
       splitChunks: {
