@@ -8,10 +8,10 @@ Error: File to import not found or unreadable: breakpoints.
 
 1: @import 'breakpoints';
 2: 
-3: nav {
-4:   position: fixed;
-5:   top: 0;
-6:   width: 100%;
+3: 
+4: nav {
+5:   position: fixed;
+6:   top: 0;
 
 Backtrace:
 /Users/WF981235/Documents/Development/frmcs/src/components/style.scss:1
@@ -51,4 +51,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: breakpoints.\A        Load paths:\A          /Applications/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/bourbon\A          /Applications/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/neat\A          /Applications/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/base\A         on line 1 of /Users/WF981235/Documents/Development/frmcs/src/components/style.scss\A \A 1: @import 'breakpoints';\A 2: \A 3: nav {\A 4:   position: fixed;\A 5:   top: 0;\A 6:   width: 100%;"; }
+  content: "Error: File to import not found or unreadable: breakpoints.\A        Load paths:\A          /Applications/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/bourbon\A          /Applications/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/neat\A          /Applications/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/base\A         on line 1 of /Users/WF981235/Documents/Development/frmcs/src/components/style.scss\A \A 1: @import 'breakpoints';\A 2: \A 3: \A 4: nav {\A 5:   position: fixed;\A 6:   top: 0;"; }
