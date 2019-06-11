@@ -9,7 +9,7 @@ export default class Menu extends Component {
         <div className="frmcs-nav-text">Floissac Receivables Management & Consulting</div>
         </div>
         <div className="menu">
-        <div className="menu__item active">
+        <div className="menu__item">
             <a href="/index.html">Home</a>
         </div>
         <div className="menu__item">
